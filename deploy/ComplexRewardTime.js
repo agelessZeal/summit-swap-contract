@@ -8,27 +8,33 @@ module.exports = async function (hre) {
   const smtAddress = (await deployments.get("SummitToken")).address
   console.log('smtAddress:',smtAddress)
 
-  await deploy("SummitChefV2", {
+  const summitChefV2 = (await ethers.getContract("SummitChefV2")).address
+  console.log('summitChefV2:',summitChefV2)
+
+  const rewardPersecond = 1300000000000000
+
+
+  await deploy("ComplexRewarderTime", {
     from: deployer,
-    args: [smtAddress],
+    args: [smtAddress,rewardPersecond,summitChefV2],
     log: true,
     deterministicDeployment: false
   })
 
-  // const summitChefV2 = await ethers.getContract("SummitChefV2")
+  const complexRewarder = await ethers.getContract("ComplexRewarderTime")
   // if (await summitChefV2.owner() !== dev) {
   //   console.log("Transfer ownership of SummitChefV2 to dev")
   //   await (await summitChefV2.transferOwnership(dev, true, false)).wait()
   // }
 
   await sleep(60)
-  console.log('verify the summitChefV2:',summitChefV2.address)
+  console.log('verify the complexRewarder:',complexRewarder.address)
   await hre.run('verify:verify', {
-    address: summitChefV2.address,
-    contract: 'contracts/SummitChefV2.sol:SummitChefV2',
-    constructorArguments: [smtAddress],
+    address: complexRewarder.address,
+    contract: 'contracts/mocks/ComplexRewarderTime.sol:ComplexRewarderTime',
+    constructorArguments: [smtAddress,rewardPersecond,summitChefV2],
   })
 }
 
-module.exports.tags = ["SummitChefV2"]
+module.exports.tags = ["ComplexRewarderTime"]
 // module.exports.dependencies = ["SMT"]
