@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/EnumerableSet.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./SMToken.sol";
+import "./SummitToken.sol";
 
 interface IMigratorChef {
     // Perform LP token migration from legacy UniswapV2 to SummitSwap.
@@ -56,7 +56,7 @@ contract MasterChef is Ownable {
         uint256 accSummitPerShare; // Accumulated SMTs per share, times 1e12. See below.
     }
     // The SUMMIT TOKEN!
-    SMT public summit;
+    SummitToken public summit;
     // Dev address.
     address public devaddr;
     // Block number when bonus SUMMIT period ends.
@@ -84,7 +84,7 @@ contract MasterChef is Ownable {
     );
 
     constructor(
-        SMT _summit,
+        SummitToken _summit,
         address _devaddr,
         uint256 _summitPerBlock,
         uint256 _startBlock,

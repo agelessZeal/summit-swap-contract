@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 // it's NOT recommmended to use this in production.  
 
 // SMT with Governance.
-contract SMT is ERC20("SMT", "SUMMIT"), Ownable {
+contract SummitToken is ERC20("SMT", "SUMMIT"), Ownable {
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner (MasterChef).
     function mint(address _to, uint256 _amount) public onlyOwner {
         _mint(_to, _amount);

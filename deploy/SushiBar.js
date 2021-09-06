@@ -3,7 +3,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
 
   const { deployer } = await getNamedAccounts()
 
-  const sushi = await deployments.get("SMT")
+  const sushi = await deployments.get("SushiToken")
 
   await deploy("SushiBar", {
     from: deployer,
