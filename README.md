@@ -1,10 +1,6 @@
-# SushiSwap
+# SummitSwap
 
-https://sushi.com/
-
-## Deployed Contracts
-
-https://dev.sushi.com/sushiswap/contracts
+https://summit.com/
 
 ## Docs
 
