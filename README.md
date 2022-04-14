@@ -1,6 +1,5 @@
 # SummitSwap
 
-https://summit.com/
 
 ## Docs
 
